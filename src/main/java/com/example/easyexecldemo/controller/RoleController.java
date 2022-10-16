@@ -1,6 +1,7 @@
 package com.example.easyexecldemo.controller;
 
 import com.alibaba.excel.util.FileUtils;
+import com.example.easyexecldemo.annotation.TimeMonitor;
 import com.example.easyexecldemo.po.ScoreData;
 import com.example.easyexecldemo.utils.DefaultExcelListener;
 import com.example.easyexecldemo.utils.EasyExcelUtil;
@@ -29,6 +30,7 @@ import java.net.URLEncoder;
 public class RoleController {
 
     @PostMapping("/import")
+    @TimeMonitor
     public void importUser(@RequestPart("file") MultipartFile multipartFile1) throws Exception {
         //MultipartFileToFile转File
         File file = FileUtil.MultipartFileToFile(multipartFile1);
@@ -43,6 +45,7 @@ public class RoleController {
     }
 
     @PostMapping("/download")
+    @TimeMonitor
     public void download(HttpServletRequest request, HttpServletResponse response) throws IOException {
         File file = new File("C:\\Users\\16138\\Desktop\\2.xls");
         writeResponse(file,response);
